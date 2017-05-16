@@ -12,37 +12,33 @@ import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Text implements Shape, Serializable
-{
-	
-	Point startPoint;
-	ArrayList<String> lines = new ArrayList<String>();
-		
-	public Text (Point sPoint, ArrayList<String> input) 
-	{
-		startPoint = sPoint;
-		lines = input;
-	}
-	
-	@Override
-	public void draw(Graphics gfx) 
-	{
-		int spacing = gfx.getFontMetrics().getHeight();
-		int n=0;
-		for (String line : lines) {
-			gfx.drawString(line, startPoint.x, startPoint.y + (n*spacing));
-			n++;
-		}
-	}
-	
-	public static void draw (Graphics gfx, Point sPoint, ArrayList<String> lines) {
-		int spacing = gfx.getFontMetrics().getHeight();
-		int n=0;
-		for (String line : lines) {
-			gfx.drawString(line, sPoint.x, sPoint.y + (n*spacing));
-			n++;
-		}
-	}
-	
-	private static final long serialVersionUID = 1L;	
+public class Text implements Shape, Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private final Point startPoint;
+    private ArrayList<String> lines = new ArrayList<>();
+
+    public Text(Point sPoint, ArrayList<String> input) {
+        startPoint = sPoint;
+        lines = input;
+    }
+
+    public static void draw(Graphics gfx, Point sPoint, ArrayList<String> lines) {
+        int spacing = gfx.getFontMetrics().getHeight();
+        int n = 0;
+        for (String line : lines) {
+            gfx.drawString(line, sPoint.x, sPoint.y + (n * spacing));
+            n++;
+        }
+    }
+
+    @Override
+    public void draw(Graphics gfx) {
+        int spacing = gfx.getFontMetrics().getHeight();
+        int n = 0;
+        for (String line : lines) {
+            gfx.drawString(line, startPoint.x, startPoint.y + (n * spacing));
+            n++;
+        }
+    }
 }
